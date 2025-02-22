@@ -1,0 +1,10 @@
+.idea
+
+# Virtual environment
+.venv
+
+# Cache
+__pycache__
+
+# Graphs
+# report
