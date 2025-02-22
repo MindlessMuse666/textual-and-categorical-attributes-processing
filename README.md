@@ -9,28 +9,33 @@
 В рамках данного практического занятия была выполнена визуализация данных о пассажирах Титаника с использованием библиотек Python Matplotlib, Seaborn и Plotly. Целью работы являлось получение навыков визуализации данных для их анализа и представления.
 
 
-## 2. Скриншоты выполненного задания
-
-#### 2.1. Скрипт [main.py](src/main.py)
+## 2. Скриншоты выполненного задания и конспекта лекции
+### 2.1. Выполненное задание
+#### 2.1.1 Скрипт [main.py](src/main.py)
 <p align="center">
   <img src="https://github.com/user-attachments/assets/64e24bea-8fd2-4707-ab1a-ac92e583421c" alt="main.py">
 </p>
 
-#### 2.2. Скрипт [data_loader.py](src/data_loader.py)
+#### 2.1.2 Скрипт [data_loader.py](src/data_loader.py)
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a4b963ec-241e-4a53-8649-e01f3ddb4399" alt="data_loader.py">
 </p>
 
-#### 2.3. Скрипт [feature_engineering.py](src/feature_engineering.py)
+#### 2.1.3. Скрипт [feature_engineering.py](src/feature_engineering.py)
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c24c8879-26c5-4b7d-acc5-215334d437ee" alt="feature_engineering.py">
 </p>
 
-#### 2.4. Скрипт [model_training.py](src/model_training.py)
+#### 2.1.4. Скрипт [model_training.py](src/model_training.py)
 <p align="center">
   <img src="https://github.com/user-attachments/assets/5cd2edc0-22dc-42af-83a1-365d4d77ef3e" alt="model_training.py">
 </p>
 
+### 2.2. Конспект лекции
+<p align="center">
+  <img src="report/lecture-notes/1.jpg" alt="lecture-notes-1.jpg">
+  <img src="report/lecture-notes/2.jpg" alt="lecture-notes-2.jpg">
+</p>
 
 ## 3. Методика и подходы
 ### 3.1. Методы
