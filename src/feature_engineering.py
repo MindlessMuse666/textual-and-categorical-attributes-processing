@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 
+
 class FeatureEngineering:
     '''
     Класс для выполнения Feature Engineering на данных Titanic.
@@ -15,6 +16,7 @@ class FeatureEngineering:
         self.onehot_encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
         self.label_encoder = LabelEncoder()
 
+
     def extract_name_features(self, df):
         '''
         Разделяет столбец 'Name' на 'Фамилия' и 'Имя'.
@@ -27,7 +29,9 @@ class FeatureEngineering:
         '''
         df[['Фамилия', 'Имя']] = df['Name'].str.split(',', n=1, expand=True)
         df['Имя'] = df['Имя'].str.split('.', n=1, expand=True)[1].str.strip()
+        
         return df
+
 
     def encode_embarked(self, df):
         '''
@@ -39,8 +43,9 @@ class FeatureEngineering:
         Returns:
             pandas.DataFrame: DataFrame с преобразованным столбцом 'Embarked'.
         '''
-        df['Embarked'] = df['Embarked'].map({'C': 1, 'Q': 2, 'S': 3}).fillna(0) # Fills NaN with 0
+        df['Embarked'] = df['Embarked'].map({'C': 1, 'Q': 2, 'S': 3}).fillna(0)
         return df
+
 
     def encode_pclass(self, df):
         '''
@@ -54,10 +59,11 @@ class FeatureEngineering:
         '''
         pclass_encoded = self.onehot_encoder.fit_transform(df['Pclass'].values.reshape(-1, 1))
         pclass_df = pd.DataFrame(pclass_encoded, columns=[f'Pclass_{i}' for i in range(pclass_encoded.shape[1])])
-        pclass_df.index = df.index # Keep the index in case of row deletion
+        pclass_df.index = df.index
         df = pd.concat([df, pclass_df], axis=1)
 
         return df
+
 
     def encode_sex(self, df):
         '''
@@ -72,6 +78,7 @@ class FeatureEngineering:
         df['Sex'] = self.label_encoder.fit_transform(df['Sex'])
         return df
 
+
     def create_description(self, df):
         '''
         Создает столбец 'Description' на основе 'Name', 'Sex', 'Age' и 'Pclass'.
@@ -85,6 +92,7 @@ class FeatureEngineering:
         df['Description'] = df['Name'].fillna('') + ' ' + df['Sex'].astype(str).fillna('') + ' ' + df['Age'].astype(str).fillna('') + ' ' + df['Pclass'].astype(str).fillna('')
         return df
 
+
     def vectorize_description(self, df):
         '''
         Применяет TF-IDF к столбцу 'Description'.
@@ -97,9 +105,11 @@ class FeatureEngineering:
         '''
         tfidf_matrix = self.tfidf_vectorizer.fit_transform(df['Description'].fillna(''))
         tfidf_df = pd.DataFrame(tfidf_matrix.toarray(), columns=self.tfidf_vectorizer.get_feature_names_out())
-        tfidf_df.index = df.index # Keep the index in case of row deletion
+        tfidf_df.index = df.index
         df = pd.concat([df, tfidf_df], axis=1)
+        
         return df
+
 
     def create_cabin_feature(self, df):
         '''
